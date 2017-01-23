@@ -6,6 +6,9 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 export class DropdownDirective {
   private isOpen: boolean = false;
 
+  constructor(
+  ) {}
+
   @HostBinding('class.open') get opened() {
     return this.isOpen;
   }
@@ -15,6 +18,10 @@ export class DropdownDirective {
   }
 
   @HostListener('click') close() {
+    this.isOpen = false;
+  }
+
+  @HostListener('mouseleave') closeByMouseleave() {
     this.isOpen = false;
   }
 
