@@ -11,12 +11,22 @@ import { ShoppingListService } from 'app/common/services/shopping-list.service';
 })
 export class ShoppingListComponent implements OnInit {
   items: Ingredient[] = [];
+  selectedItem: Ingredient = null;
+
   constructor(
       private shoppingListService: ShoppingListService
   ) { }
 
   ngOnInit() {
     this.items = this.shoppingListService.getItems();
+  }
+
+  onSelectItem(item: Ingredient) {
+    this.selectedItem = item;
+  }
+
+  onCleared() {
+    this.selectedItem = null;
   }
 
 }
