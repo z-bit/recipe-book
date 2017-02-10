@@ -1,15 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { RecipesComponent } from './recipes/recipes.component';
+import { HomeComponent } from './home/home.component';
+
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
-import { RECIPES_ROUTES } from './recipes/recipes.routes';
-
-
-
 const routes: Routes = [
-    {path: '', redirectTo: 'recipes', pathMatch: 'full'},
-    {path: 'recipes', component: RecipesComponent, children: RECIPES_ROUTES},
+    {path: '', component: HomeComponent},
+ // {path: 'recipes', component: RecipesComponent, children: RECIPES_ROUTES},     => lazy loading, like this:
+    {path: 'recipes' , loadChildren: 'app/recipes/recipes.module#RecipesModule'}, // ============
     {path: 'shopping-list', component: ShoppingListComponent},
 
 ];
